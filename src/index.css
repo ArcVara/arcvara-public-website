@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #1A7FAD #0D1F3C;
+  }
+
+  html::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: #0D1F3C;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background: #1A7FAD;
+    border-radius: 3px;
+  }
+
+  body {
+    background-color: #0D1F3C;
+    color: #FFFFFF;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-vara-teal text-navy font-semibold px-6 py-3 rounded-lg
+           transition-all duration-200 hover:bg-vara-teal-light hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-vara-teal focus:ring-offset-2 focus:ring-offset-navy;
+    box-shadow: 0 0 20px rgba(0, 194, 203, 0.25);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 30px rgba(0, 194, 203, 0.45);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 border border-arc-blue text-arc-blue font-semibold px-6 py-3 rounded-lg
+           transition-all duration-200 hover:border-vara-teal hover:text-vara-teal
+           focus:outline-none focus:ring-2 focus:ring-arc-blue focus:ring-offset-2 focus:ring-offset-navy;
+  }
+
+  .section-label {
+    @apply text-vara-teal text-xs font-semibold uppercase tracking-widest mb-3;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-blue-200/70 leading-relaxed;
+  }
+
+  .card-dark {
+    @apply bg-navy-card border border-arc-blue/10 rounded-xl p-6
+           transition-all duration-300 hover:border-arc-blue/30 hover:shadow-lg;
+  }
+
+  .card-dark:hover {
+    box-shadow: 0 4px 40px rgba(26, 127, 173, 0.1);
+  }
+
+  .gradient-teal {
+    background: linear-gradient(135deg, #00C2CB 0%, #1A7FAD 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(90deg, #00C2CB, #1A7FAD);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image: linear-gradient(rgba(26,127,173,0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(26,127,173,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .glow-teal {
+    box-shadow: 0 0 20px rgba(0, 194, 203, 0.3), 0 0 60px rgba(0, 194, 203, 0.1);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(26, 127, 173, 0.3), 0 0 60px rgba(26, 127, 173, 0.1);
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    /* fallback: force visible after 1.5s if Observer never fires */
+    animation: forceVisible 0s 1.5s forwards;
+  }
+
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: none;
+  }
+}
+
+/* Graph node pulse animation */
+@keyframes nodePulse {
+  0%, 100% { opacity: 0.6; r: 4; }
+  50% { opacity: 1; r: 6; }
+}
+
+@keyframes edgeDash {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes floatNode {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(3px, -5px); }
+  50% { transform: translate(-2px, -8px); }
+  75% { transform: translate(-4px, -3px); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes forceVisible {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.graph-node {
+  animation: nodePulse 3s ease-in-out infinite;
+}
+
+.graph-edge {
+  stroke-dasharray: 8 4;
+  animation: edgeDash 3s linear infinite;
+}
