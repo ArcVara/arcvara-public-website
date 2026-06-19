@@ -1,7 +1,7 @@
 import GraphBackground from './GraphBackground'
 
 const stats = [
-  { value: 'USD 1.83B', label: 'Market by 2029' },
+  { value: '4', label: 'Architecture Layers' },
   { value: '40+', label: 'Integrations' },
   { value: '8', label: 'Platform Modules' },
   { value: 'GCC-First', label: 'Compliance-Native' },

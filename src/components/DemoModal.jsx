@@ -76,10 +76,10 @@ export default function DemoModal({ open, onClose }) {
           {!submitted ? (
             <>
               <div className="mb-6">
-                <img src="/arcvara_logo_compact_dark.svg" alt="Arcvara" className="h-7 mb-4" />
+                <img src="/arcvara_logo_compact_dark.svg" alt="Arcvara" className="h-9 mb-4" />
                 <h2 className="text-xl font-bold text-white mb-1">Register Your Interest</h2>
                 <p className="text-white/50 text-sm">
-                  Tell us about your organisation and we will be in touch to explore how Arcvara can help — no commitment required.
+                  We're in early development. Share your details and we'll schedule a call to explore the problem together — no commitment, no pressure.
                 </p>
               </div>
 
@@ -158,7 +158,7 @@ export default function DemoModal({ open, onClose }) {
                     </>
                   ) : (
                     <>
-                      Request Demo
+                      Register Your Interest
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
@@ -183,7 +183,7 @@ export default function DemoModal({ open, onClose }) {
               </div>
               <h3 className="text-xl font-bold text-white mb-2">Interest Registered</h3>
               <p className="text-white/55 text-sm mb-6">
-                Thank you, {form.name.split(' ')[0]}. The Arcvara team will be in touch within one business day.
+                Thank you, {form.name.split(' ')[0]}. We'll be in touch shortly to schedule a call and see how we can work together.
               </p>
               <button onClick={onClose} className="btn-secondary text-sm px-6 py-2">
                 Close

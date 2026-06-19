@@ -38,7 +38,7 @@ export default function Footer({ onDemoClick }) {
             <img
               src="/arcvara_logo_compact_dark.svg"
               alt="Arcvara"
-              className="h-8 mb-4"
+              className="h-10 mb-4"
             />
             <p className="text-white/40 text-sm leading-relaxed mb-6">
               The AI-native Enterprise Architecture Intelligence Platform.

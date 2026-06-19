@@ -112,7 +112,7 @@ export default function SolutionSection() {
                 boxShadow: '0 0 40px rgba(0,194,203,0.1)',
               }}
             >
-              <img src="/arcvara_logo_compact_dark.svg" alt="Arcvara" className="h-8 mx-auto mb-2" />
+              <img src="/arcvara_logo_compact_dark.svg" alt="Arcvara" className="h-10 mx-auto mb-2" />
               <div className="text-sm text-white/60">Single Live Workspace · AI-Native · Compliance-Embedded</div>
             </div>
           </div>

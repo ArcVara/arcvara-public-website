@@ -19,7 +19,7 @@ const expertise = [
     ),
     area: 'Artificial Intelligence & Data Science',
     description:
-      'A decade of applied AI and data science at industrial scale — upstream energy, oilfield services, and enterprise technology. MSc Artificial Intelligence. Leads Arcvara\'s AI intelligence layer, designing the models that power every automated insight the platform surfaces.',
+      'A decade of applied AI and data science at industrial scale — upstream energy, oilfield services, and enterprise technology. Leads the AI intelligence layer, designing the models that power every automated insight the platform surfaces.',
   },
   {
     icon: (
@@ -38,10 +38,15 @@ const credentials = [
   'PMP® Certified',
   'Google Cloud Architect',
   'OCI Certified',
-  'MSc Artificial Intelligence',
-  'Saudi Banking & Logistics',
+  'AWS Cloud',
+  'Microsoft Azure',
+  'Artificial Intelligence',
+  'Data Science',
+  'Saudi Banking',
+  'Logistics & Supply Chain',
   'GCC Regulatory Compliance',
   'Industrial AI at Scale',
+  'Openshift & Kubernetes',
 ]
 
 export default function TeamSection() {

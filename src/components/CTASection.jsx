@@ -18,16 +18,14 @@ export default function CTASection({ onDemoClick }) {
       />
 
       <div ref={ref} className={`relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center animate-on-scroll ${visible ? 'visible' : ''}`}>
-        <div className="section-label">Get Started</div>
+        <div className="section-label">Early Access</div>
         <h2 className="section-title mb-6">
-          Ready to See Your Entire{' '}
-          <span className="text-gradient">Architecture,</span>
-          <br />
-          Live?
+          Be Part of{' '}
+          <span className="text-gradient">What We're Building.</span>
         </h2>
         <p className="section-subtitle max-w-xl mx-auto mb-10">
-          Request a demo and see Arcvara discover and map your environment in a live session.
-          No slides. No manual setup. Just your architecture, visualised in real time.
+          Arcvara is in active development. Register your interest and we'll schedule a call
+          to explore how it can work for your organisation — and help shape what we build next.
         </p>
 
         <button
