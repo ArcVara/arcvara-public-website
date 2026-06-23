@@ -1,21 +1,33 @@
 import { useState, useEffect } from 'react'
-
-const navLinks = [
-  { label: 'Platform', href: '#solution' },
-  { label: 'Modules', href: '#modules' },
-  { label: 'Compliance', href: '#compliance' },
-  { label: 'Team', href: '#team' },
-]
+import { useTranslation } from 'react-i18next'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export default function Navbar({ onDemoClick }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const navLinks = [
+    { label: t('navbar.platform'), href: '#solution' },
+    { label: t('navbar.modules'), href: '#modules' },
+    { label: t('navbar.compliance'), href: '#compliance' },
+    { label: t('navbar.team'), href: '#team' },
+  ]
+
+  const toggleLang = () => {
+    const current = i18n.language
+    const next = current === 'en' ? 'ar' : 'en'
+    const newPath = location.pathname.replace(`/${current}`, `/${next}`)
+    navigate(newPath)
+  }
 
   return (
     <header
@@ -39,7 +51,7 @@ export default function Navbar({ onDemoClick }) {
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
-              key={link.label}
+              key={link.href}
               href={link.href}
               className="text-sm text-white/70 hover:text-vara-teal transition-colors duration-200 font-medium"
             >
@@ -48,13 +60,19 @@ export default function Navbar({ onDemoClick }) {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* CTA + Language switcher */}
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={toggleLang}
+            className="text-sm font-medium border border-arc-blue/25 rounded-full px-3.5 py-1.5 text-white/60 hover:text-white hover:border-arc-blue/50 transition-all"
+          >
+            {t('navbar.switchLang')}
+          </button>
           <button
             onClick={onDemoClick}
             className="btn-primary text-sm py-2 px-5"
           >
-            Register Your Interest
+            {t('navbar.registerInterest')}
           </button>
         </div>
 
@@ -79,7 +97,7 @@ export default function Navbar({ onDemoClick }) {
           <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
               <a
-                key={link.label}
+                key={link.href}
                 href={link.href}
                 className="text-white/70 hover:text-vara-teal transition-colors text-base font-medium"
                 onClick={() => setMenuOpen(false)}
@@ -87,12 +105,20 @@ export default function Navbar({ onDemoClick }) {
                 {link.label}
               </a>
             ))}
-            <button
-              onClick={() => { setMenuOpen(false); onDemoClick() }}
-              className="btn-primary text-sm self-start mt-2"
-            >
-              Register Your Interest
-            </button>
+            <div className="flex items-center gap-3 mt-1">
+              <button
+                onClick={() => { setMenuOpen(false); toggleLang() }}
+                className="text-sm font-medium border border-arc-blue/25 rounded-full px-3.5 py-1.5 text-white/60 hover:text-white transition-all"
+              >
+                {t('navbar.switchLang')}
+              </button>
+              <button
+                onClick={() => { setMenuOpen(false); onDemoClick() }}
+                className="btn-primary text-sm"
+              >
+                {t('navbar.registerInterest')}
+              </button>
+            </div>
           </div>
         </div>
       )}

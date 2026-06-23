@@ -1,20 +1,12 @@
 import { useState, useEffect } from 'react'
-
-const roles = [
-  'Enterprise Architect',
-  'CTO / CIO / CISO',
-  'DevOps / Cloud Engineer',
-  'Security / Compliance',
-  'Solution Architect',
-  'Product / Strategy',
-  'Investor',
-  'Other',
-]
+import { useTranslation } from 'react-i18next'
 
 export default function DemoModal({ open, onClose }) {
+  const { t } = useTranslation()
   const [form, setForm] = useState({ name: '', email: '', company: '', role: '' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const roles = t('demo.roles', { returnObjects: true })
 
   useEffect(() => {
     if (open) {
@@ -33,7 +25,6 @@ export default function DemoModal({ open, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
-    // Simulate submission — replace with actual endpoint later
     setTimeout(() => {
       setLoading(false)
       setSubmitted(true)
@@ -48,23 +39,18 @@ export default function DemoModal({ open, onClose }) {
         open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
       }`}
     >
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-navy-dark/90 backdrop-blur-sm"
-        onClick={onClose}
-      />
+      <div className="absolute inset-0 bg-navy-dark/90 backdrop-blur-sm" onClick={onClose} />
 
-      {/* Modal */}
       <div
         className={`relative z-10 w-full max-w-lg bg-navy-card border border-arc-blue/20 rounded-2xl shadow-2xl transition-all duration-300 ${
           open ? 'scale-100 translate-y-0' : 'scale-95 translate-y-4'
         }`}
         style={{ boxShadow: '0 25px 80px rgba(0,0,0,0.5), 0 0 40px rgba(0,194,203,0.05)' }}
       >
-        {/* Close button */}
+        {/* Close button — uses end-4 so it's at the trailing edge in both LTR and RTL */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors p-1"
+          className="absolute top-4 end-4 text-white/40 hover:text-white transition-colors p-1"
           aria-label="Close"
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,16 +63,14 @@ export default function DemoModal({ open, onClose }) {
             <>
               <div className="mb-6">
                 <img src="/arcvara_logo_compact_dark.svg" alt="Arcvara" className="h-9 mb-4" />
-                <h2 className="text-xl font-bold text-white mb-1">Register Your Interest</h2>
-                <p className="text-white/50 text-sm">
-                  We're in early development. Share your details and we'll schedule a call to explore the problem together — no commitment, no pressure.
-                </p>
+                <h2 className="text-xl font-bold text-white mb-1">{t('demo.title')}</h2>
+                <p className="text-white/50 text-sm">{t('demo.subtitle')}</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs text-white/50 mb-1.5">Full Name *</label>
+                    <label className="block text-xs text-white/50 mb-1.5">{t('demo.fullName')} *</label>
                     <input
                       type="text"
                       name="name"
@@ -98,7 +82,7 @@ export default function DemoModal({ open, onClose }) {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-white/50 mb-1.5">Work Email *</label>
+                    <label className="block text-xs text-white/50 mb-1.5">{t('demo.workEmail')} *</label>
                     <input
                       type="email"
                       name="email"
@@ -112,7 +96,7 @@ export default function DemoModal({ open, onClose }) {
                 </div>
 
                 <div>
-                  <label className="block text-xs text-white/50 mb-1.5">Company *</label>
+                  <label className="block text-xs text-white/50 mb-1.5">{t('demo.company')} *</label>
                   <input
                     type="text"
                     name="company"
@@ -125,7 +109,7 @@ export default function DemoModal({ open, onClose }) {
                 </div>
 
                 <div>
-                  <label className="block text-xs text-white/50 mb-1.5">Your Role *</label>
+                  <label className="block text-xs text-white/50 mb-1.5">{t('demo.yourRole')} *</label>
                   <select
                     name="role"
                     value={form.role}
@@ -134,7 +118,7 @@ export default function DemoModal({ open, onClose }) {
                     className="w-full bg-navy border border-arc-blue/20 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-vara-teal/50 transition-colors appearance-none"
                     style={{ colorScheme: 'dark' }}
                   >
-                    <option value="" disabled>Select your role</option>
+                    <option value="" disabled>{t('demo.selectRole')}</option>
                     {roles.map((r) => (
                       <option key={r} value={r}>{r}</option>
                     ))}
@@ -154,12 +138,12 @@ export default function DemoModal({ open, onClose }) {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                       </svg>
-                      Submitting...
+                      {t('demo.submitting')}
                     </>
                   ) : (
                     <>
-                      Register Your Interest
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      {t('demo.submit')}
+                      <svg className="w-4 h-4 rtl:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </>
@@ -168,7 +152,7 @@ export default function DemoModal({ open, onClose }) {
               </form>
 
               <p className="text-white/25 text-xs text-center mt-4">
-                Or email us directly at{' '}
+                {t('demo.emailNote')}{' '}
                 <a href="mailto:jawad.a.almarhoon@gmail.com" className="text-arc-blue/60 hover:text-arc-blue transition-colors">
                   jawad.a.almarhoon@gmail.com
                 </a>
@@ -181,12 +165,12 @@ export default function DemoModal({ open, onClose }) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Interest Registered</h3>
+              <h3 className="text-xl font-bold text-white mb-2">{t('demo.successTitle')}</h3>
               <p className="text-white/55 text-sm mb-6">
-                Thank you, {form.name.split(' ')[0]}. We'll be in touch shortly to schedule a call and see how we can work together.
+                {t('demo.successMessage', { name: form.name.split(' ')[0] })}
               </p>
               <button onClick={onClose} className="btn-secondary text-sm px-6 py-2">
-                Close
+                {t('demo.close')}
               </button>
             </div>
           )}

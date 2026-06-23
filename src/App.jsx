@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useState, useEffect, useLayoutEffect } from 'react'
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useParams, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import ErrorBoundary from './components/ErrorBoundary'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -37,22 +38,53 @@ function HomePage({ onDemoClick }) {
   )
 }
 
+function LanguageWrapper() {
+  const { lang } = useParams()
+  const navigate = useNavigate()
+  const { i18n } = useTranslation()
+
+  useLayoutEffect(() => {
+    const valid = ['en', 'ar']
+    if (!valid.includes(lang)) {
+      const saved = localStorage.getItem('arcvara-lang') || 'en'
+      navigate(`/${saved}`, { replace: true })
+      return
+    }
+    i18n.changeLanguage(lang)
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr'
+    document.documentElement.lang = lang
+    localStorage.setItem('arcvara-lang', lang)
+  }, [lang])
+
+  if (!['en', 'ar'].includes(lang)) return null
+  return <Outlet />
+}
+
+function RootRedirect() {
+  const saved = localStorage.getItem('arcvara-lang') || 'en'
+  return <Navigate to={`/${saved}`} replace />
+}
+
 export default function App() {
   const [demoOpen, setDemoOpen] = useState(false)
 
   return (
     <ErrorBoundary>
-    <BrowserRouter>
-      <div className="min-h-screen bg-navy text-white">
-        <Routes>
-          <Route path="/" element={<HomePage onDemoClick={() => setDemoOpen(true)} />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsConditions />} />
-          <Route path="/data-rights" element={<DataRights />} />
-        </Routes>
-        <DemoModal open={demoOpen} onClose={() => setDemoOpen(false)} />
-      </div>
-    </BrowserRouter>
+      <BrowserRouter>
+        <div className="min-h-screen bg-navy text-white">
+          <Routes>
+            <Route path="/:lang" element={<LanguageWrapper />}>
+              <Route index element={<HomePage onDemoClick={() => setDemoOpen(true)} />} />
+              <Route path="privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="terms" element={<TermsConditions />} />
+              <Route path="data-rights" element={<DataRights />} />
+            </Route>
+            <Route path="/" element={<RootRedirect />} />
+            <Route path="*" element={<RootRedirect />} />
+          </Routes>
+          <DemoModal open={demoOpen} onClose={() => setDemoOpen(false)} />
+        </div>
+      </BrowserRouter>
     </ErrorBoundary>
   )
 }

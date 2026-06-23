@@ -15,6 +15,22 @@
     scrollbar-color: #1A7FAD #0D1F3C;
   }
 
+  html[lang="ar"] {
+    font-family: 'Cairo', 'Segoe UI', sans-serif;
+    letter-spacing: 0;
+  }
+
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] h4,
+  html[lang="ar"] button,
+  html[lang="ar"] input,
+  html[lang="ar"] select,
+  html[lang="ar"] label {
+    font-family: 'Cairo', sans-serif;
+  }
+
   html::-webkit-scrollbar {
     width: 6px;
   }
