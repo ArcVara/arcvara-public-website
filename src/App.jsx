@@ -70,7 +70,7 @@ export default function App() {
 
   return (
     <ErrorBoundary>
-      <BrowserRouter basename="/arcvara-public-website">
+      <BrowserRouter>
         <div className="min-h-screen bg-navy text-white">
           <Routes>
             <Route path="/:lang" element={<LanguageWrapper />}>
