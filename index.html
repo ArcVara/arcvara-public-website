@@ -2,7 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/arcvara_icon_teal.svg" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%arcvara_icon_teal.svg" />
+    <script>
+      (function(l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          })
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded[0] + (decoded[1] ? '&' + decoded[1] : '') + l.hash
+          )
+        }
+      }(window.location))
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Arcvara is the AI-native Enterprise Architecture Intelligence Platform that unifies your full technology stack — cloud, network, APIs, security, and compliance — into one live, intelligent workspace." />
     <meta name="keywords" content="enterprise architecture, AI platform, cloud infrastructure, compliance, SAMA CSF, NCA ECC, GCC, Saudi Arabia" />

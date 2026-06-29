@@ -62,7 +62,7 @@ export default function DemoModal({ open, onClose }) {
           {!submitted ? (
             <>
               <div className="mb-6">
-                <img src="/arcvara_logo_compact_dark.svg" alt="Arcvara" className="h-9 mb-4" />
+                <img src={`${import.meta.env.BASE_URL}arcvara_logo_compact_dark.svg`} alt="Arcvara" className="h-9 mb-4" />
                 <h2 className="text-xl font-bold text-white mb-1">{t('demo.title')}</h2>
                 <p className="text-white/50 text-sm">{t('demo.subtitle')}</p>
               </div>

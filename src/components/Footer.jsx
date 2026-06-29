@@ -41,7 +41,7 @@ export default function Footer({ onDemoClick }) {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="md:col-span-1">
-            <img src="/arcvara_logo_compact_dark.svg" alt="Arcvara" className="h-10 mb-4" />
+            <img src={`${import.meta.env.BASE_URL}arcvara_logo_compact_dark.svg`} alt="Arcvara" className="h-10 mb-4" />
             <p className="text-white/40 text-sm leading-relaxed mb-6">
               {t('footer.tagline')}
             </p>

@@ -12,7 +12,7 @@ export default function TermsConditions() {
       <div className="border-b border-arc-blue/15 bg-navy-dark">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to={`/${lang}`}>
-            <img src="/arcvara_logo_compact_dark.svg" alt="Arcvara" className="h-9" />
+            <img src={`${import.meta.env.BASE_URL}arcvara_logo_compact_dark.svg`} alt="Arcvara" className="h-9" />
           </Link>
           <Link
             to={`/${lang}`}
