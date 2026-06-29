@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 96" width="360" height="96" role="img">
+  <title>Arcvara</title>
+  <g transform="translate(55,57)">
+    <line x1="-38" y1="6"   x2="-12" y2="-30" stroke="#1A7FAD" stroke-width="2"   opacity="0.45"/>
+    <line x1="-38" y1="6"   x2="4"   y2="26"  stroke="#1A7FAD" stroke-width="2"   opacity="0.45"/>
+    <line x1="-12" y1="-30" x2="30"  y2="-8"  stroke="#00C2CB" stroke-width="2"   opacity="0.85"/>
+    <line x1="4"   y1="26"  x2="30"  y2="-8"  stroke="#00C2CB" stroke-width="2"   opacity="0.85"/>
+    <line x1="30"  y1="-8"  x2="46"  y2="22"  stroke="#1A7FAD" stroke-width="1.5" opacity="0.3"/>
+    <line x1="-12" y1="-30" x2="8"   y2="-46" stroke="#1A7FAD" stroke-width="1.5" opacity="0.2"/>
+    <circle cx="-38" cy="6"   r="5"   fill="#FFFFFF"/>
+    <circle cx="-12" cy="-30" r="4.5" fill="#1A7FAD"/>
+    <circle cx="4"   cy="26"  r="4.5" fill="#1A7FAD"/>
+    <circle cx="30"  cy="-8"  r="12"  fill="#00C2CB"/>
+    <circle cx="30"  cy="-8"  r="4.5" fill="#0D1F3C"/>
+    <circle cx="46"  cy="22"  r="3"   fill="#1A7FAD" opacity="0.38"/>
+    <circle cx="8"   cy="-46" r="2.5" fill="#1A7FAD" opacity="0.22"/>
+  </g>
+  <text x="114" y="63"
+    font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="42" font-weight="500" letter-spacing="5">
+    <tspan fill="#00C2CB">ARC</tspan><tspan fill="#FFFFFF">VARA</tspan>
+  </text>
+</svg>

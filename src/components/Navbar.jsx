@@ -41,7 +41,7 @@ export default function Navbar({ onDemoClick }) {
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 group" aria-label="Arcvara home">
           <img
-            src={`${import.meta.env.BASE_URL}arcvara_logo_compact_dark.svg`}
+            src={`${import.meta.env.BASE_URL}arcvara_compact_transparent_white.svg`}
             alt="Arcvara"
             className="h-10 w-auto"
           />
